@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose') // 載入 mongoose
+const bodyParser = require('body-parser')
 mongoose.connect('mongodb+srv://alpha:camp@cluster0.e6ngl.mongodb.net/todo-list?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+app.use(bodyParser.urlencoded({extended: true}))
 const Todo = require('./models/todo')
 
 
@@ -25,10 +27,20 @@ app.get('/', (req, res) => {
   .then(todos => res.render('index', {todos}))
   .catch(error => console.error(error))  
 })
+app.get('/todos/new', (req, res) => {
+  return res.render('new')
+})
+app.post('/todos', (req, res) => {
+  const name = req.body.name
+  return Todo.create({name})
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 app.get('/', (req, res) => {
-  res.send('lalala')
+  res.send('todo-list')
 })
+
 
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
