@@ -24,6 +24,7 @@ app.set('view engine', 'hbs')
 app.get('/', (req, res) => {
   Todo.find()//取出Todo model的資料
   .lean() //model object turn into JS
+  .sort({ _id: 'asc' }) //升冪排序
   .then(todos => res.render('index', {todos}))
   .catch(error => console.error(error))  
 })
