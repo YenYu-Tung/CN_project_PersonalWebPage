@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose') // 載入 mongoose
 const bodyParser = require('body-parser')
+const methodOverirde = require('method-override')
 mongoose.connect('mongodb+srv://alpha:camp@cluster0.e6ngl.mongodb.net/todo-list?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(bodyParser.urlencoded({extended: true}))
 const Todo = require('./models/todo')
+app.use(methodOverirde('_method'))
 
 
 const db = mongoose.connection
@@ -52,7 +54,7 @@ app.get('/todos/:id/edit', (req, res) => {
     .then((todo) => res.render('edit', { todo }))
     .catch(error => console.log(error))
 })
-app.post('/todos/:id/edit', (req, res) => {
+app.put('/todos/:id', (req, res) => {
   const id = req.params.id
   const {name, isDone} = req.body
   return Todo.findById(id)
@@ -64,7 +66,7 @@ app.post('/todos/:id/edit', (req, res) => {
     .then(() => res.redirect(`/todos/${id}`))
     .catch(error => console.log(error))
 })
-app.post('/todos/:id/delete', (req, res) => {
+app.delete('/todos/:id', (req, res) => {
   const id = req.params.id
   return Todo.findById(id)
     .then(todo => todo.remove())
