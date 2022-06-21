@@ -53,10 +53,11 @@ app.get('/todos/:id/edit', (req, res) => {
 })
 app.post('/todos/:id/edit', (req, res) => {
   const id = req.params.id
-  const name = req.body.name
+  const {name, isDone} = req.body
   return Todo.findById(id)
     .then(todo => {
       todo.name = name
+      todo.isDone = isDone === 'on'
       return todo.save()
     })
     .then(() => res.redirect(`/todos/${id}`))
@@ -69,6 +70,7 @@ app.post('/todos/:id/delete', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
 
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
