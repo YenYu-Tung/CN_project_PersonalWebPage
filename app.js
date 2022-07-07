@@ -15,6 +15,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+const usePassport = require('./config/passport')
+usePassport(app)
 
 const methodOverirde = require('method-override')
 app.use(methodOverirde('_method'))
