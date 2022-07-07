@@ -17,6 +17,12 @@ app.use(session({
 }))
 const usePassport = require('./config/passport')
 usePassport(app)
+//middleware
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
 
 const methodOverirde = require('method-override')
 app.use(methodOverirde('_method'))
