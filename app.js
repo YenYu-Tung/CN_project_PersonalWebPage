@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const app = express()
 
 const PORT = process.env.PORT || 3000
@@ -7,6 +8,13 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 
 require('./config/mongoose')
+
+//express-session
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 
 const methodOverirde = require('method-override')
 app.use(methodOverirde('_method'))
