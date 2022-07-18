@@ -1,6 +1,7 @@
 const express = require('express')
 const session = require('express-session')
 const app = express()
+const usePassport = require('./config/passport')
 
 const PORT = process.env.PORT || 3000
 
@@ -15,9 +16,11 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
-const usePassport = require('./config/passport')
+
+//passport
 usePassport(app)
-//middleware
+
+//設定本地變數 
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
