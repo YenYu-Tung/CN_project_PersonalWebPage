@@ -3,7 +3,12 @@ const session = require('express-session')
 const app = express()
 const usePassport = require('./config/passport')
 
-const PORT = process.env.PORT || 3000
+require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const PORT = process.env.PORT
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -12,7 +17,7 @@ require('./config/mongoose')
 
 //express-session
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
