@@ -19,11 +19,16 @@ app.use(session({
 
 //passport
 usePassport(app)
+//connect-flash
+const flash = require('connect-flash')
+app.use(flash())
 
 //設定本地變數 
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
 

@@ -16,13 +16,30 @@ router.get('/register', (req, res) => {
 })
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
+  const errors = []
+  if (!name || !email || !password || !confirmPassword) {
+    errors.push({ message: 'All fields are required.' })
+  }
+  if (password !== confirmPassword) {
+    errors.push({ message: 'The password does not match the confirmation password！' })
+  }
+  if (errors.length) {
+    return res.render('register', {
+      errors,
+      name,
+      email,
+      password,
+      confirmPassword
+    })
+  }
   // 檢查使用者是否已經註冊
   User.findOne({ email })
     .then(user => {
       // 如果已經註冊：退回原本畫面
       if (user) {
-        console.log('User already exists.')
+        errors.push({ message: 'User already exists.' })
         res.render('register', {
+          errors,
           name,
           email,
           password,
@@ -43,6 +60,7 @@ router.post('/register', (req, res) => {
 })
 router.get('/logout', (req, res) => {
   req.logout()
+  req.flash('success_msg', 'Logout successfully!')
   res.redirect('/users/login')
 })
 
