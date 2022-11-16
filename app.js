@@ -47,6 +47,8 @@ const exphbs = require('express-handlebars')
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs'}))
 app.set('view engine', 'hbs')
 
+
+
 app.listen(PORT, () => {
-  console.log(`App is running on http://localhost:${PORT}`)
+  console.log("Server is running!")
 })

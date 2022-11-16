@@ -13,6 +13,7 @@ router.use('/todos', authenticator, todos)
 //user.js
 const users = require('./modules/users')
 router.use('/users', users)
+
 //避免無限循環
 router.use('/', authenticator, home)
 

@@ -11,5 +11,11 @@ router.get('/', (req, res) => {
     .then(todos => res.render('index', { todos }))
     .catch(error => console.error(error))
 })
+router.get('/videos', (req, res) => {
+  res.render('videos')
+})
+router.get('/musics', (req, res) => {
+  res.render('musics')
+})
 
 module.exports = router

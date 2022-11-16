@@ -1,23 +1,40 @@
-<a href="/todos/new" class="btn btn-primary">Create</a>
-<ul class="list-group">
-  {{#each todos}}
-  <li class="list-group-item">
-    <div class="row">
-      <div class="col-auto me-auto">
-        <input style="vertical-align: middle;" type="checkbox" name="isDone" {{#if this.isDone }} checked {{/if}}
-          disabled>
-        <h4 style="display: inline; vertical-align: middle;">
-          {{ this.name }}
-        </h4>
+<a href="/todos/new" class="btn btn-primary">Create Todo</a>
+<p></p>
+<span ></span>
+<div class="border border-2 border-primary rounded p-3">
+  <ul class="list-group">
+    <h4>Your Todos</h4>
+    {{#each todos}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto me-auto">
+          <input style="vertical-align: middle;" type="checkbox" name="isDone" {{#if this.isDone }} checked {{/if}}
+            disabled>
+          <h4 style="display: inline; vertical-align: middle;">
+            {{ this.name }}
+          </h4>
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-secondary" href="./todos/{{ this._id }}">detail</a>
+          <a class="btn btn-success" href="./todos/{{ this._id }}/edit">edit</a>
+          <form action="./todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-danger" type="submit">delete</button>
+          </form>
+        </div>
       </div>
-      <div class="col-auto">
-        <a class="btn btn-secondary" href="./todos/{{ this._id }}">detail</a>
-        <a class="btn btn-success" href="./todos/{{ this._id }}/edit">edit</a>
-        <form action="./todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-          <button class="btn btn-danger" type="submit">delete</button>
-        </form>
-      </div>
-    </div>
-  </li>
-  {{/each}}
-</ul>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+<p></p>
+<div>
+  <a href="/videos" class="btn btn-primary">Videos</a>
+</div>
+<p></p>
+<div>
+  <a href="/musics" class="btn btn-primary">Musics</a>
+</div>
+
+
+
+

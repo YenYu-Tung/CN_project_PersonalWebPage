@@ -6,6 +6,7 @@ const Todo = require('../../models/todo')
 router.get('/new', (req, res) => {
   return res.render('new')
 })
+
 router.post('/', (req, res) => {
   const userId = req.user._id
   const name = req.body.name
