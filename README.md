@@ -10,7 +10,7 @@
 * clone the repository to local
 * $ npm install
 * $ npm run start
-* see "App is listening!" means run successfully
+* see "Server is running!" means run successfully
 * ctrl + c to stop server
 ## development tools
 * Node.js 16.5.0
