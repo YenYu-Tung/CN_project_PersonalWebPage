@@ -1,10 +1,11 @@
-# personal page with todo-list
+# CN_project - personal page
 ## features
 * signup/login/logout
-* encryped passwords set up by user
-* todo-list
-* vedio streaming
+* video streaming
 * music streaming
+* bonus
+1. encryped passwords 
+2. todo-list
 ## environment setup
 * install node.js & npm
 * clone the repository to local
@@ -19,5 +20,10 @@
 * Bootstrap 5.1.3
 * Font-awesome 5.6.3
 ## deployment
+port number: 
+1. Heroku: process.env.PORT(distributed by heroku)
+2. localhost: 3000
+link:
 https://evening-temple-56332.herokuapp.com/users/login
+(Due to heroku will not be free since 2022/11/28, this link may not be valid.)
 
