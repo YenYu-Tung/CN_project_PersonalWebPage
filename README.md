@@ -24,5 +24,5 @@
 * Heroku: process.env.PORT(distributed by heroku)
 * localhost: 3000
 2. link: https://evening-temple-56332.herokuapp.com/users/login
-(Due to heroku will not be free since 2022/11/28, this link may not be valid.)
+(Due to heroku will not be free since 2022/11/28, this link may not be valid since then.)
 
