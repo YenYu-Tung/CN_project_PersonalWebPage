@@ -20,10 +20,9 @@
 * Bootstrap 5.1.3
 * Font-awesome 5.6.3
 ## deployment
-port number: 
-1. Heroku: process.env.PORT(distributed by heroku)
-2. localhost: 3000
-link:
-https://evening-temple-56332.herokuapp.com/users/login
+1. port number: 
+* Heroku: process.env.PORT(distributed by heroku)
+* localhost: 3000
+2. link: https://evening-temple-56332.herokuapp.com/users/login
 (Due to heroku will not be free since 2022/11/28, this link may not be valid.)
 
