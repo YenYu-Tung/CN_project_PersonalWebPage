@@ -52,3 +52,6 @@ app.set('view engine', 'hbs')
 app.listen(PORT, () => {
   console.log("Server is running!")
 })
+
+// Export the Express API
+module.exports = app;
